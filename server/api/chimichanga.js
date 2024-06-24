@@ -1,11 +1,14 @@
 // api/index.js
 const express = require("express");
-const { getAllChimis, createChimi } = require("../db");
 const chimichangaRouter = express.Router();
+
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
 
 // /api/chimichanga
 chimichangaRouter.get("/", async (req, res) => {
-  const chimis = await getAllChimis();
+  const chimis = await prisma.chimichangas.findMany();
   res.send(chimis);
 });
 

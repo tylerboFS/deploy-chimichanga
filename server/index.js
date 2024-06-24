@@ -8,9 +8,6 @@ app.use("/api", apiRouter);
 
 app.use("/", express.static(path.join(__dirname, '../client/dist')));
 
-const { client } = require('./db');
-client.connect();
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
