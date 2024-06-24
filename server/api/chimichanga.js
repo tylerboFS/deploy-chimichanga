@@ -3,7 +3,7 @@ const express = require("express");
 const { getAllChimis, createChimi } = require("../db");
 const chimichangaRouter = express.Router();
 
-// /api/chimichanga
+// /api/chimichangas
 chimichangaRouter.get("/", async (req, res) => {
   const chimis = await getAllChimis();
   res.send(chimis);

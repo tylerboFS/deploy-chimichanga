@@ -8,18 +8,21 @@ const App = () => {
       const result = await fetch("/api/chimichangas");
       const data = await result.json();
       setChimis(data);
-    }
+    };
     fetchChimis();
   }, []);
 
   return (
-   <ul>
-    {chimis.map(chimi => {
-      return <li>{chimi.name} ${chimi.price}.00</li>
-    })}
-   </ul>
-  
-  ); 
-}
+    <ul>
+      {chimis.map((chimi) => {
+        return (
+          <li key={chimi.id}>
+            {chimi.name} ${chimi.price}.00
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
 
 export default App;
