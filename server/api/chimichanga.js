@@ -1,11 +1,12 @@
 // api/index.js
-const express = require('express');
+const express = require("express");
+const { getAllChimis, createChimi } = require("../db");
 const chimichangaRouter = express.Router();
 
 // /api/chimichanga
-chimichangaRouter.get("/", (req, res)=>{
-  res.send("Chimi route");
-})
-
+chimichangaRouter.get("/", async (req, res) => {
+  const chimis = await getAllChimis();
+  res.send(chimis);
+});
 
 module.exports = chimichangaRouter;

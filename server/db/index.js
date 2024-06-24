@@ -10,17 +10,19 @@ const client = new Client({
       : undefined,
 });
 
-async function createChimi({ 
-  name,
-  price
-}) {
+async function createChimi({ name, price }) {
   try {
-    const { rows: [ chimi ] } = await client.query(`
+    const {
+      rows: [chimi],
+    } = await client.query(
+      `
       INSERT INTO chimichangas(name, price) 
       VALUES($1, $2) 
       ON CONFLICT (name) DO NOTHING 
       RETURNING *;
-    `, [name, price]);
+    `,
+      [name, price]
+    );
 
     return chimi;
   } catch (error) {
@@ -28,6 +30,16 @@ async function createChimi({
   }
 }
 
-module.exports = { client, createChimi };
+async function getAllChimis() {
+  try {
+    const { rows } = await client.query(`
+    SELECT id, name, price FROM chimichangas;
+    `);
 
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
 
+module.exports = { client, createChimi, getAllChimis };
