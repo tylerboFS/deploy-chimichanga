@@ -13,15 +13,18 @@ const App = () => {
   }, []);
 
   return (
-    <ul>
-      {chimis.map((chimi) => {
-        return (
-          <li key={chimi.id}>
-            {chimi.name} ${chimi.price}.00
-          </li>
-        );
-      })}
-    </ul>
+    <>
+    <h1>CHIMICHANGA TIME BOYEEEEZZZ</h1>
+      <ul>
+        {chimis.map((chimi) => {
+          return (
+            <li key={chimi.id}>
+              {chimi.name} ${chimi.price}.00
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 };
 
