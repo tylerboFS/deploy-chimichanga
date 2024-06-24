@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./index",
     "start:dev": "nodemon ./index",
     "seed": "node ./db/seed.js"
   },
@@ -11,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
+    "path": "^0.12.7",
     "pg": "^8.12.0"
   },
   "devDependencies": {

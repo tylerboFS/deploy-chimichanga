@@ -2,12 +2,11 @@ const express = require('express')
 const apiRouter = require('./api')
 const app = express()
 const port = 3000
+const path = require('path');
 
 app.use("/api", apiRouter);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use("/", express.static(path.join(__dirname, '../client/dist')));
 
 const { client } = require('./db');
 client.connect();
